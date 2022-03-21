@@ -2,6 +2,10 @@ const express = require("express");
 const dotenv = require("dotenv");
 const connectDB = require("./database");
 const testRoutes = require("./apis/tests/testRoutes");
+const userRouter = require("./apis/users/userRoutes");
+//Auth
+const passport = require("passport");
+const { localStrategy, jwtStrategy } = require("./middleware/passport");
 
 dotenv.config();
 
@@ -11,9 +15,16 @@ app.use(express.json());
 
 app.use((req, res, next) => {
   console.log(`${req.method} ${req.protocol}://${req.get("host")}${req.path}`);
+  console.log(req.body);
   next();
 });
 
+//routes
+app.use("/api", userRouter);
+// Passport Setup
+app.use(passport.initialize());
+passport.use(localStrategy);
+passport.use(jwtStrategy);
 app.use("/api/tests", testRoutes);
 
 app.use((err, req, res, next) => {

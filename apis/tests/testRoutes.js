@@ -1,4 +1,5 @@
 const express = require("express");
+const passport = require("passport");
 const {
   controllerGetTests,
   controllerAddTest,
@@ -21,8 +22,12 @@ router.param("usertestId", async (req, res, next, usertestId) => {
     next(err);
   }
 });
-
-router.get("/", controllerGetTests);
+//Hadeel
+router.get(
+  "/",
+  passport.authenticate("jwt", { session: false }),
+  controllerGetTests
+);
 
 router.post("/", controllerAddTest);
 
