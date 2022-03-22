@@ -1,4 +1,6 @@
 const User = require("../../models/User");
+const dotenv = require("dotenv");
+//dotenv.config();
 
 // Auth Libraries
 const bcrypt = require("bcrypt");
@@ -18,6 +20,16 @@ createHash = async (password) => {
   const saltRound = 10;
   const hashedPassword = await bcrypt.hash(password, saltRound);
   return hashedPassword;
+};
+
+exports.controllerGetUsers = async (req, res, next) => {
+  try {
+    const users = await User.find();
+
+    res.json({ msg: "Users fetched", payload: users });
+  } catch (error) {
+    next(error);
+  }
 };
 
 exports.signup = async (req, res, next) => {

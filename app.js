@@ -2,8 +2,10 @@ const express = require("express");
 const dotenv = require("dotenv");
 const connectDB = require("./database");
 const testRoutes = require("./apis/tests/testRoutes");
-const userRouter = require("./apis/users/userRoutes");
+const userRoutes = require("./apis/users/userRoutes");
+const queueRoutes = require("./apis/queues/queueRoutes");
 const memberRouter = require("./apis/members/memberRoutes");
+
 
 //Auth
 const passport = require("passport");
@@ -21,14 +23,17 @@ app.use((req, res, next) => {
   next();
 });
 
-//routes
-app.use("/api", userRouter);
 // Passport Setup
 app.use(passport.initialize());
 passport.use(localStrategy);
 passport.use(jwtStrategy);
+
+//routes
+app.use("/api/users", userRoutes);
 app.use("/api/tests", testRoutes);
+app.use("/api/queue", queueRoutes);
 app.use("/api/members", memberRouter);
+
 
 app.use((err, req, res, next) => {
   res

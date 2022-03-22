@@ -1,7 +1,11 @@
 const express = require("express");
-const { signup, signin } = require("./userControllers");
-const router = express.Router();
+const { signup, signin, controllerGetUsers } = require("./userControllers");
+
 const passport = require("passport");
+
+const router = express.Router();
+
+router.get("/", controllerGetUsers);
 
 router.post("/signup", signup);
 
