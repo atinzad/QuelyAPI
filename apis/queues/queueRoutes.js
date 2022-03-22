@@ -6,9 +6,23 @@ const {
   controllerAddQueue,
   controllerDeleteQueue,
   controllerUpdateQueue,
+  controllerFetchQueue,
 } = require("./queueControllers");
 
 const router = express.Router();
+
+router.param("queueId", async (req, res, next, queueId) => {
+  console.log("queueId", queueId);
+  const queue = await controllerFetchQueue(queueId, next);
+  if (queue) {
+    req.queue = queue;
+    next();
+  } else {
+    const err = new Error("Queue Not Found");
+    err.status = 404;
+    next(err);
+  }
+});
 
 router.get("/", controllerGetQueues);
 

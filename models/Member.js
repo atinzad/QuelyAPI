@@ -3,9 +3,9 @@ const MemberSchema = new mongoose.Schema(
   {
     phone: Number,
     email: String,
-    fields: { name: String, value: String },
     waiting: Boolean,
-    // queue: { type: mongoose.Schema.Types.ObjectId, ref: "Queue" },
+    queue: { type: mongoose.Schema.Types.ObjectId, ref: "Queue" },
+    //fields: { name: String, value: String },
   },
   { timestamps: true }
 );
