@@ -25,7 +25,7 @@ router.param("usertestId", async (req, res, next, usertestId) => {
 
 router.get(
   "/",
-  //passport.authenticate("jwt", { session: false }),
+  // passport.authenticate("jwt", { session: false }),
   controllerGetTests
 );
 
