@@ -15,10 +15,9 @@ exports.controllerGetQueues = async (req, res, next) => {
 exports.controllerAddQueue = async (req, res, next) => {
   try {
     //req.body.owner = req.user._id;
-    clg("req.body", req.body);
     const queue = req.body;
     const createdQueue = await Queue.create(queue);
-    res.status(200).json({ msg: "Queue Created", payload: "createdQueue" });
+    res.status(200).json({ msg: "Queue Created", payload: createdQueue });
   } catch (error) {
     next(error);
   }
