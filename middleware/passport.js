@@ -7,9 +7,8 @@ require("dotenv").config();
 
 /// Sign in
 exports.localStrategy = new LocalStrategy(async (username, password, done) => {
-  console.log("hi", username);
   try {
-    const user = await User.findOne({ email: username });
+    const user = await User.findOne({ email: username.toLocaleLowerCase() });
     const passwordMatch = user
       ? await bcrypt.compare(password, user.password)
       : false;

@@ -28,18 +28,18 @@ router.get("/", controllerGetQueues);
 
 router.post(
   "/",
-  //passport.authenticate("jwt", { session: false }),
+  passport.authenticate("jwt", { session: false }),
   controllerAddQueue
 );
 
 router.delete(
   "/:queueId",
-  //passport.authenticate("jwt", { session: false }),
+  passport.authenticate("jwt", { session: false }),
   controllerDeleteQueue
 );
 router.put(
   "/:queueId",
-  //   passport.authenticate("jwt", { session: false }),
+  passport.authenticate("jwt", { session: false }),
   controllerUpdateQueue
 );
 
