@@ -1,13 +1,14 @@
-const mongoose = require("mongoose");
-const MemberSchema = new mongoose.Schema(
+const { Schema, model } = require("mongoose");
+
+const MemberSchema = new Schema(
   {
     phone: Number,
     email: String,
-    waiting: Boolean,
-    queue: { type: mongoose.Schema.Types.ObjectId, ref: "Queue" },
+    waiting: { type: Boolean, default: true },
+    queue: { type: Schema.Types.ObjectId, ref: "Queue" },
     //fields: { name: String, value: String },
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Member", MemberSchema);
+module.exports = model("Member", MemberSchema);

@@ -6,7 +6,6 @@ const userRoutes = require("./apis/users/userRoutes");
 const queueRoutes = require("./apis/queues/queueRoutes");
 const memberRouter = require("./apis/members/memberRoutes");
 
-
 //Auth
 const passport = require("passport");
 const { localStrategy, jwtStrategy } = require("./middleware/passport");
@@ -31,9 +30,8 @@ passport.use(jwtStrategy);
 //routes
 app.use("/api/users", userRoutes);
 app.use("/api/tests", testRoutes);
-app.use("/api/queue", queueRoutes);
+app.use("/api/queues", queueRoutes);
 app.use("/api/members", memberRouter);
-
 
 app.use((err, req, res, next) => {
   res
