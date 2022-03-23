@@ -29,6 +29,7 @@ exports.controllerGetQueues = async (req, res, next) => {
 exports.controllerAddQueue = async (req, res, next) => {
   try {
     //hadeel
+    //Solved
     req.body.owner = req.user._id; //Note: add this so that the signed in User is the user that will have that Queue associted with them
     const queue = req.body;
     const createdQueue = await Queue.create(queue);
