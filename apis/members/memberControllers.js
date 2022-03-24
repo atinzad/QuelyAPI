@@ -55,6 +55,12 @@ exports.controllerUpdateMember = async (req, res, next) => {
 
 exports.controllerDeleteMember = async (req, res, next) => {
   try {
+    // let queue = Queue.findById(req.member.queue);
+    // queue.members = queue.members.filter(member=> member._id !== req.member._id)
+    // await Queue.findByIdAndUpdate(queue._id , queue, {
+    //   runValidators: true,
+    //   new: true,
+    // });
     await req.member.remove();
     res.status(204).end();
   } catch (error) {
