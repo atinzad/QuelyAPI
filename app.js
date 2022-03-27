@@ -1,5 +1,6 @@
 const express = require("express");
 const dotenv = require("dotenv");
+const cors = require("cors");
 const connectDB = require("./database");
 const testRoutes = require("./apis/tests/testRoutes");
 const userRoutes = require("./apis/users/userRoutes");
@@ -15,6 +16,7 @@ dotenv.config();
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 app.use((req, res, next) => {
   console.log(`${req.method} ${req.protocol}://${req.get("host")}${req.path}`);
