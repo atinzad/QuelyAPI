@@ -39,6 +39,13 @@ exports.controllerAddQueue = async (req, res, next) => {
   }
 };
 
-exports.controllerDeleteQueue = async (req, res, next) => {};
+exports.controllerDeleteQueue = async (req, res, next) => {
+  try {
+    await req.queue.remove();
+    res.status(204).end();
+  } catch (error) {
+    next(error);
+  }
+};
 
 exports.controllerUpdateQueue = async (req, res, next) => {};
