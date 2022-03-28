@@ -39,7 +39,6 @@ exports.controllerUpdateMember = async (req, res, next) => {
   try {
     const id = req.member._id;
     const memberBody = req.body;
-    console.log("hello");
     const updatedMember = await Member.findByIdAndUpdate(id, memberBody, {
       runValidators: true,
       new: true,

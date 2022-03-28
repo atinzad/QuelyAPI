@@ -31,12 +31,10 @@ router.get(
 
 router.post("/", controllerAddMember);
 
-router.put(
-  "/:memberId",
-
-  controllerUpdateMember
-);
+router.put("/:memberId", controllerUpdateMember);
 
 router.delete("/:memberId", controllerDeleteMember);
+
+router.put("/:memberId", controllerUpdateMember);
 
 module.exports = router;
