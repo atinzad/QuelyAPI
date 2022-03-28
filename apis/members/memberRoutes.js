@@ -39,4 +39,6 @@ router.put(
 
 router.delete("/:memberId", controllerDeleteMember);
 
+router.put("/:memberId", controllerUpdateMember);
+
 module.exports = router;
