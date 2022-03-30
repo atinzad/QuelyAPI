@@ -9,7 +9,7 @@ const QueueSchema = new Schema(
     isPhoneRequired: { type: Boolean, default: false },
     isEmailAvailable: { type: Boolean, default: false },
     isEmailRequired: { type: Boolean, default: false },
-    //fields: [{}],
+    fields: [{ type: String }],
   },
   { timestamps: true }
 );
