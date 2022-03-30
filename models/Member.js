@@ -6,7 +6,7 @@ const MemberSchema = new Schema(
     email: String,
     waiting: { type: Boolean, default: true },
     queue: { type: Schema.Types.ObjectId, ref: "Queue" },
-    //fields: { name: String, value: String },
+    fieldValues: {},
   },
   { timestamps: true }
 );
